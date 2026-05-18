@@ -13,41 +13,41 @@ import { AlertComponent } from '../../../shared/components/alert.component';
     <div class="page-header fade-in">
       <div>
         <p class="text-muted mb-0" style="font-size:0.8rem">ODS</p>
-        <h2>{{ isEdit ? 'Edit ODS' : 'New ODS' }}</h2>
+        <h2>{{ isEdit ? 'Editar ODS' : 'Nuevo ODS' }}</h2>
       </div>
-      <a routerLink="/ods" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Back</a>
+      <a routerLink="/ods" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Atrás</a>
     </div>
     <app-alert [message]="alertMsg" [type]="alertType"></app-alert>
 
     <div class="card fade-in" style="max-width:620px">
-      <div class="card-header"><h5><i class="bi bi-bullseye me-2"></i>{{ isEdit ? 'Edit' : 'Create' }} ODS</h5></div>
+      <div class="card-header"><h5><i class="bi bi-bullseye me-2"></i>{{ isEdit ? 'Editar' : 'Crear' }} ODS</h5></div>
       <div class="card-body p-4">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="row g-3">
             <div class="col-sm-4">
-              <label class="form-label">ODS Number <span class="text-danger">*</span></label>
+              <label class="form-label">Número ODS <span class="text-danger">*</span></label>
               <input formControlName="odsNumber" type="number" class="form-control"
                      [class.is-invalid]="isInvalid('odsNumber')" placeholder="1-17">
-              <div class="invalid-feedback">Number is required.</div>
+              <div class="invalid-feedback">El número es requerido.</div>
             </div>
             <div class="col-sm-8">
-              <label class="form-label">ODS Name <span class="text-danger">*</span></label>
+              <label class="form-label">Nombre ODS <span class="text-danger">*</span></label>
               <input formControlName="odsName" type="text" class="form-control"
-                     [class.is-invalid]="isInvalid('odsName')" placeholder="e.g. Quality Education">
-              <div class="invalid-feedback">Name is required (min 3 chars).</div>
+                     [class.is-invalid]="isInvalid('odsName')" placeholder="p. ej. Educación de Calidad">
+              <div class="invalid-feedback">El nombre es requerido (mín 3 caracteres).</div>
             </div>
             <div class="col-12">
-              <label class="form-label">Description</label>
-              <textarea formControlName="description" class="form-control" rows="3" placeholder="Brief description..."></textarea>
+              <label class="form-label">Descripción</label>
+              <textarea formControlName="description" class="form-control" rows="3" placeholder="Descripción breve..."></textarea>
             </div>
           </div>
           <div class="d-flex gap-2 mt-4">
             <button type="submit" class="btn btn-primary px-4" [disabled]="saving">
               <span *ngIf="saving" class="spinner-border spinner-border-sm me-2"></span>
               <i *ngIf="!saving" class="bi bi-check-lg me-1"></i>
-              {{ isEdit ? 'Update' : 'Create' }}
+              {{ isEdit ? 'Actualizar' : 'Crear' }}
             </button>
-            <a routerLink="/ods" class="btn btn-outline-secondary">Cancel</a>
+            <a routerLink="/ods" class="btn btn-outline-secondary">Cancelar</a>
           </div>
         </form>
       </div>
@@ -83,7 +83,7 @@ export class OdsFormComponent implements OnInit {
     const action = this.isEdit ? this.odsService.update(this.odsId, payload) : this.odsService.create(payload);
     action.subscribe({
       next: () => this.router.navigate(['/ods']),
-      error: () => { this.showAlert('Operation failed.', 'danger'); this.saving = false; }
+      error: () => { this.showAlert('Operación fallida.', 'danger'); this.saving = false; }
     });
   }
 

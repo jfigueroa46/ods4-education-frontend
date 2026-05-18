@@ -13,10 +13,10 @@ import { Student } from '../../../core/models/models';
   imports: [CommonModule, RouterLink],
   template: `
     <div class="page-header fade-in">
-      <div><p class="text-muted mb-0" style="font-size:0.8rem">Students</p><h2>Student Detail</h2></div>
+      <div><p class="text-muted mb-0" style="font-size:0.8rem">Estudiantes</p><h2>Detalle del Estudiante</h2></div>
       <div class="d-flex gap-2">
-        <a [routerLink]="['/students/edit', student?.id]" class="btn btn-primary"><i class="bi bi-pencil me-1"></i>Edit</a>
-        <a routerLink="/students" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Back</a>
+        <a [routerLink]="['/students/edit', student?.id]" class="btn btn-primary"><i class="bi bi-pencil me-1"></i>Editar</a>
+        <a routerLink="/students" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Atrás</a>
       </div>
     </div>
 
@@ -29,30 +29,30 @@ import { Student } from '../../../core/models/models';
           <dt class="col-sm-5 text-muted" style="font-size:0.8rem">ID</dt>
           <dd class="col-sm-7">{{ student.id }}</dd>
 
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Person</dt>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Persona</dt>
           <dd class="col-sm-7">{{ personName }}</dd>
 
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Institution</dt>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Institución</dt>
           <dd class="col-sm-7">{{ institutionName }}</dd>
 
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Program</dt>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Programa</dt>
           <dd class="col-sm-7">{{ programName }}</dd>
 
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Student Code</dt>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Código de Estudiante</dt>
           <dd class="col-sm-7 fw-semibold" style="font-family:monospace">{{ student.studentCode || '—' }}</dd>
 
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Grade</dt>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Grado</dt>
           <dd class="col-sm-7">{{ student.grade || '—' }}</dd>
 
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Enrollment Date</dt>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Fecha de Matrícula</dt>
           <dd class="col-sm-7">{{ student.enrollmentDate || '—' }}</dd>
 
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Academic Status</dt>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Estado Académico</dt>
           <dd class="col-sm-7">
             <span class="badge rounded-pill"
               [style.background]="student.academicStatus === 'Active' ? '#d1fae5' : '#fee2e2'"
               [style.color]="student.academicStatus === 'Active' ? '#065f46' : '#991b1b'">
-              {{ student.academicStatus || '—' }}
+              {{ student.academicStatus === 'Active' ? 'Activo' : (student.academicStatus === 'Graduated' ? 'Egresado' : (student.academicStatus === 'Suspended' ? 'Suspendido' : (student.academicStatus === 'Withdrawn' ? 'Retirado' : student.academicStatus))) || '—' }}
             </span>
           </dd>
         </dl>
@@ -60,7 +60,7 @@ import { Student } from '../../../core/models/models';
     </div>
 
     <div *ngIf="loading" class="text-muted">
-      <div class="spinner-border spinner-border-sm me-2"></div>Loading...
+      <div class="spinner-border spinner-border-sm me-2"></div>Cargando...
     </div>
   `
 })

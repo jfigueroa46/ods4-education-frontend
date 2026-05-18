@@ -14,60 +14,60 @@ import { AlertComponent } from '../../../shared/components/alert.component';
   imports: [CommonModule, ReactiveFormsModule, RouterLink, AlertComponent],
   template: `
     <div class="page-header fade-in">
-      <div><p class="text-muted mb-0" style="font-size:0.8rem">Teachers</p><h2>{{ isEdit ? 'Edit Teacher' : 'New Teacher' }}</h2></div>
-      <a routerLink="/teachers" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Back</a>
+      <div><p class="text-muted mb-0" style="font-size:0.8rem">Profesores</p><h2>{{ isEdit ? 'Editar Profesor' : 'Nuevo Profesor' }}</h2></div>
+      <a routerLink="/teachers" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Atrás</a>
     </div>
     <app-alert [message]="alertMsg" [type]="alertType"></app-alert>
 
     <div class="card fade-in" style="max-width:760px">
-      <div class="card-header"><h5><i class="bi bi-person-workspace me-2"></i>{{ isEdit ? 'Edit' : 'Create' }} Teacher</h5></div>
+      <div class="card-header"><h5><i class="bi bi-person-workspace me-2"></i>{{ isEdit ? 'Editar' : 'Crear' }} Profesor</h5></div>
       <div class="card-body p-4">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="row g-3">
 
             <div class="col-sm-6">
-              <label class="form-label">Person <span class="text-danger">*</span></label>
+              <label class="form-label">Persona <span class="text-danger">*</span></label>
               <select formControlName="personId" class="form-select" [class.is-invalid]="isInvalid('personId')">
-                <option value="">— Select Person —</option>
+                <option value="">— Seleccionar Persona —</option>
                 <option *ngFor="let p of persons" [value]="p.id">{{ p.firstName }} {{ p.lastName }} ({{ p.documentNumber }})</option>
               </select>
-              <div class="invalid-feedback">Please select a person.</div>
+              <div class="invalid-feedback">Por favor selecciona una persona.</div>
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label">Institution <span class="text-danger">*</span></label>
+              <label class="form-label">Institución <span class="text-danger">*</span></label>
               <select formControlName="institutionId" class="form-select" [class.is-invalid]="isInvalid('institutionId')">
-                <option value="">— Select Institution —</option>
+                <option value="">— Seleccionar Institución —</option>
                 <option *ngFor="let i of institutions" [value]="i.id">{{ i.institutionName }}</option>
               </select>
-              <div class="invalid-feedback">Please select an institution.</div>
+              <div class="invalid-feedback">Por favor selecciona una institución.</div>
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label">Specialty</label>
+              <label class="form-label">Especialidad</label>
               <input formControlName="specialty" type="text" class="form-control"
-                     placeholder="e.g. Mathematics" maxlength="100">
+                     placeholder="p. ej. Matemáticas" maxlength="100">
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label">Education Level</label>
+              <label class="form-label">Nivel de Educación</label>
               <select formControlName="educationLevel" class="form-select">
-                <option value="">— Select —</option>
-                <option>Bachelor's</option>
-                <option>Master's</option>
-                <option>PhD</option>
-                <option>Postdoctoral</option>
-                <option>Technical</option>
+                <option value="">— Seleccionar —</option>
+                <option>Licenciatura</option>
+                <option>Maestría</option>
+                <option>Doctorado</option>
+                <option>Posdoctorado</option>
+                <option>Técnico</option>
               </select>
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label">Hiring Date</label>
+              <label class="form-label">Fecha de Contratación</label>
               <input formControlName="hiringDate" type="date" class="form-control">
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label">Salary (USD)</label>
+              <label class="form-label">Salario (USD)</label>
               <div class="input-group">
                 <span class="input-group-text">$</span>
                 <input formControlName="salary" type="number" class="form-control" placeholder="0.00" min="0" step="0.01">
@@ -80,9 +80,9 @@ import { AlertComponent } from '../../../shared/components/alert.component';
             <button type="submit" class="btn btn-primary px-4" [disabled]="saving">
               <span *ngIf="saving" class="spinner-border spinner-border-sm me-2"></span>
               <i *ngIf="!saving" class="bi bi-check-lg me-1"></i>
-              {{ isEdit ? 'Update' : 'Create' }}
+              {{ isEdit ? 'Actualizar' : 'Crear' }}
             </button>
-            <a routerLink="/teachers" class="btn btn-outline-secondary">Cancel</a>
+            <a routerLink="/teachers" class="btn btn-outline-secondary">Cancelar</a>
           </div>
 
         </form>
@@ -146,7 +146,7 @@ export class TeacherFormComponent implements OnInit {
 
     action.subscribe({
       next: () => this.router.navigate(['/teachers']),
-      error: () => { this.showAlert('Operation failed.', 'danger'); this.saving = false; }
+      error: () => { this.showAlert('Operación fallida.', 'danger'); this.saving = false; }
     });
   }
 

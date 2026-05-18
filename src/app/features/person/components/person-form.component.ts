@@ -11,67 +11,67 @@ import { AlertComponent } from '../../../shared/components/alert.component';
   imports: [CommonModule, ReactiveFormsModule, RouterLink, AlertComponent],
   template: `
     <div class="page-header fade-in">
-      <div><p class="text-muted mb-0" style="font-size:0.8rem">Persons</p><h2>{{ isEdit ? 'Edit Person' : 'New Person' }}</h2></div>
-      <a routerLink="/persons" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Back</a>
+      <div><p class="text-muted mb-0" style="font-size:0.8rem">Personas</p><h2>{{ isEdit ? 'Editar Persona' : 'Nueva Persona' }}</h2></div>
+      <a routerLink="/persons" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Atrás</a>
     </div>
     <app-alert [message]="alertMsg" [type]="alertType"></app-alert>
     <div class="card fade-in" style="max-width:760px">
-      <div class="card-header"><h5><i class="bi bi-person-fill me-2"></i>{{ isEdit ? 'Edit' : 'Create' }} Person</h5></div>
+      <div class="card-header"><h5><i class="bi bi-person-fill me-2"></i>{{ isEdit ? 'Editar' : 'Crear' }} Persona</h5></div>
       <div class="card-body p-4">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="row g-3">
             <div class="col-sm-6">
-              <label class="form-label">First Name <span class="text-danger">*</span></label>
-              <input formControlName="firstName" type="text" class="form-control" [class.is-invalid]="isInvalid('firstName')" placeholder="First name">
-              <div class="invalid-feedback">First name is required.</div>
+              <label class="form-label">Nombre <span class="text-danger">*</span></label>
+              <input formControlName="firstName" type="text" class="form-control" [class.is-invalid]="isInvalid('firstName')" placeholder="Nombre">
+              <div class="invalid-feedback">El nombre es requerido.</div>
             </div>
             <div class="col-sm-6">
-              <label class="form-label">Last Name <span class="text-danger">*</span></label>
-              <input formControlName="lastName" type="text" class="form-control" [class.is-invalid]="isInvalid('lastName')" placeholder="Last name">
-              <div class="invalid-feedback">Last name is required.</div>
+              <label class="form-label">Apellido <span class="text-danger">*</span></label>
+              <input formControlName="lastName" type="text" class="form-control" [class.is-invalid]="isInvalid('lastName')" placeholder="Apellido">
+              <div class="invalid-feedback">El apellido es requerido.</div>
             </div>
             <div class="col-sm-4">
-              <label class="form-label">Document Type</label>
+              <label class="form-label">Tipo de Documento</label>
               <select formControlName="documentType" class="form-select">
-                <option value="">— Select —</option>
-                <option>CC</option><option>TI</option><option>Passport</option><option>NIT</option>
+                <option value="">— Seleccionar —</option>
+                <option>CC</option><option>TI</option><option>Pasaporte</option><option>NIT</option>
               </select>
             </div>
             <div class="col-sm-8">
-              <label class="form-label">Document Number <span class="text-danger">*</span></label>
-              <input formControlName="documentNumber" type="text" class="form-control" [class.is-invalid]="isInvalid('documentNumber')" placeholder="Document number">
-              <div class="invalid-feedback">Document number is required.</div>
+              <label class="form-label">Número de Documento <span class="text-danger">*</span></label>
+              <input formControlName="documentNumber" type="text" class="form-control" [class.is-invalid]="isInvalid('documentNumber')" placeholder="Número de documento">
+              <div class="invalid-feedback">El número de documento es requerido.</div>
             </div>
             <div class="col-sm-4">
-              <label class="form-label">Birth Date</label>
+              <label class="form-label">Fecha de Nacimiento</label>
               <input formControlName="birthDate" type="date" class="form-control">
             </div>
             <div class="col-sm-4">
-              <label class="form-label">Gender</label>
+              <label class="form-label">Género</label>
               <select formControlName="gender" class="form-select">
-                <option value="">— Select —</option>
+                <option value="">— Seleccionar —</option>
                 <option>Masculino</option><option>Femenino</option><option>Otro</option>
               </select>
             </div>
             <div class="col-sm-4">
-              <label class="form-label">Phone</label>
+              <label class="form-label">Teléfono</label>
               <input formControlName="phone" type="text" class="form-control" placeholder="+57 300...">
             </div>
             <div class="col-sm-6">
-              <label class="form-label">Email</label>
-              <input formControlName="email" type="email" class="form-control" placeholder="example@mail.com">
+              <label class="form-label">Correo Electrónico</label>
+              <input formControlName="email" type="email" class="form-control" placeholder="ejemplo@correo.com">
             </div>
             <div class="col-sm-6">
-              <label class="form-label">Address</label>
-              <input formControlName="address" type="text" class="form-control" placeholder="Street, city...">
+              <label class="form-label">Dirección</label>
+              <input formControlName="address" type="text" class="form-control" placeholder="Calle, ciudad...">
             </div>
           </div>
           <div class="d-flex gap-2 mt-4">
             <button type="submit" class="btn btn-primary px-4" [disabled]="saving">
               <span *ngIf="saving" class="spinner-border spinner-border-sm me-2"></span>
-              <i *ngIf="!saving" class="bi bi-check-lg me-1"></i>{{ isEdit ? 'Update' : 'Create' }}
+              <i *ngIf="!saving" class="bi bi-check-lg me-1"></i>{{ isEdit ? 'Actualizar' : 'Crear' }}
             </button>
-            <a routerLink="/persons" class="btn btn-outline-secondary">Cancel</a>
+            <a routerLink="/persons" class="btn btn-outline-secondary">Cancelar</a>
           </div>
         </form>
       </div>
@@ -111,7 +111,7 @@ export class PersonFormComponent implements OnInit {
     const action = this.isEdit ? this.personService.update(this.personId, this.form.value) : this.personService.create(this.form.value);
     action.subscribe({
       next: () => this.router.navigate(['/persons']),
-      error: () => { this.showAlert('Operation failed.', 'danger'); this.saving = false; }
+      error: () => { this.showAlert('Operación fallida.', 'danger'); this.saving = false; }
     });
   }
 

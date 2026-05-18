@@ -13,29 +13,29 @@ import { PageHeaderComponent } from '../../../shared/components/page-header.comp
   standalone: true,
   imports: [CommonModule, RouterLink, AlertComponent, PageHeaderComponent],
   template: `
-    <app-page-header title="Teachers" subtitle="Manage" actionLink="/teachers/new" actionLabel="New Teacher"></app-page-header>
+    <app-page-header title="Profesores" subtitle="Administrar" actionLink="/teachers/new" actionLabel="Nuevo Profesor"></app-page-header>
     <app-alert [message]="alertMsg" [type]="alertType"></app-alert>
 
     <div class="card fade-in">
       <div class="card-header">
-        <h5><i class="bi bi-person-workspace me-2"></i>Teacher List</h5>
-        <span class="badge rounded-pill" style="background:#c05621;color:#fff">{{ teachers.length }} records</span>
+        <h5><i class="bi bi-person-workspace me-2"></i>Lista de Profesores</h5>
+        <span class="badge rounded-pill" style="background:#c05621;color:#fff">{{ teachers.length }} registros</span>
       </div>
       <div class="card-body p-0">
         <div *ngIf="loading" class="text-center py-5 text-muted">
-          <div class="spinner-border spinner-border-sm me-2"></div>Loading...
+          <div class="spinner-border spinner-border-sm me-2"></div>Cargando...
         </div>
         <div class="table-responsive" *ngIf="!loading">
           <table class="table table-hover align-middle mb-0">
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Institution</th>
-                <th>Specialty</th>
-                <th>Level</th>
-                <th>Salary</th>
-                <th class="text-end">Actions</th>
+                <th>Nombre</th>
+                <th>Institución</th>
+                <th>Especialidad</th>
+                <th>Nivel</th>
+                <th>Salario</th>
+                <th class="text-end">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -60,7 +60,7 @@ import { PageHeaderComponent } from '../../../shared/components/page-header.comp
                 </td>
               </tr>
               <tr *ngIf="teachers.length === 0">
-                <td colspan="7" class="text-center text-muted py-4">No teachers found.</td>
+                <td colspan="7" class="text-center text-muted py-4">No se encontraron profesores.</td>
               </tr>
             </tbody>
           </table>
@@ -92,7 +92,7 @@ export class TeacherListComponent implements OnInit {
     this.loading = true;
     this.teacherService.getAll().subscribe({
       next: (d) => { this.teachers = d; this.loading = false; },
-      error: () => { this.showAlert('Failed to load teachers.', 'danger'); this.loading = false; }
+      error: () => { this.showAlert('No se pudo cargar los profesores.', 'danger'); this.loading = false; }
     });
   }
 

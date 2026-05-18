@@ -12,10 +12,10 @@ import { Teacher } from '../../../core/models/models';
   imports: [CommonModule, RouterLink],
   template: `
     <div class="page-header fade-in">
-      <div><p class="text-muted mb-0" style="font-size:0.8rem">Teachers</p><h2>Teacher Detail</h2></div>
+      <div><p class="text-muted mb-0" style="font-size:0.8rem">Profesores</p><h2>Detalle del Profesor</h2></div>
       <div class="d-flex gap-2">
-        <a [routerLink]="['/teachers/edit', teacher?.id]" class="btn btn-primary"><i class="bi bi-pencil me-1"></i>Edit</a>
-        <a routerLink="/teachers" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Back</a>
+        <a [routerLink]="['/teachers/edit', teacher?.id]" class="btn btn-primary"><i class="bi bi-pencil me-1"></i>Editar</a>
+        <a routerLink="/teachers" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Atrás</a>
       </div>
     </div>
 
@@ -28,22 +28,22 @@ import { Teacher } from '../../../core/models/models';
           <dt class="col-sm-5 text-muted" style="font-size:0.8rem">ID</dt>
           <dd class="col-sm-7">{{ teacher.id }}</dd>
 
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Person</dt>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Persona</dt>
           <dd class="col-sm-7 fw-semibold">{{ personName }}</dd>
 
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Institution</dt>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Institución</dt>
           <dd class="col-sm-7">{{ institutionName }}</dd>
 
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Specialty</dt>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Especialidad</dt>
           <dd class="col-sm-7">{{ teacher.specialty || '—' }}</dd>
 
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Education Level</dt>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Nivel de Educación</dt>
           <dd class="col-sm-7">{{ teacher.educationLevel || '—' }}</dd>
 
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Hiring Date</dt>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Fecha de Contratación</dt>
           <dd class="col-sm-7">{{ teacher.hiringDate || '—' }}</dd>
 
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Salary</dt>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Salario</dt>
           <dd class="col-sm-7">
             <span *ngIf="teacher.salary">$ {{ teacher.salary | number:'1.2-2' }}</span>
             <span *ngIf="!teacher.salary">—</span>
@@ -53,7 +53,7 @@ import { Teacher } from '../../../core/models/models';
     </div>
 
     <div *ngIf="loading" class="text-muted">
-      <div class="spinner-border spinner-border-sm me-2"></div>Loading...
+      <div class="spinner-border spinner-border-sm me-2"></div>Cargando...
     </div>
   `
 })

@@ -14,30 +14,30 @@ import { PageHeaderComponent } from '../../../shared/components/page-header.comp
   standalone: true,
   imports: [CommonModule, RouterLink, AlertComponent, PageHeaderComponent],
   template: `
-    <app-page-header title="Students" subtitle="Manage" actionLink="/students/new" actionLabel="New Student"></app-page-header>
+    <app-page-header title="Estudiantes" subtitle="Administrar" actionLink="/students/new" actionLabel="Nuevo Estudiante"></app-page-header>
     <app-alert [message]="alertMsg" [type]="alertType"></app-alert>
 
     <div class="card fade-in">
       <div class="card-header">
-        <h5><i class="bi bi-person-video2 me-2"></i>Student List</h5>
-        <span class="badge rounded-pill" style="background:#7b3fa0;color:#fff">{{ students.length }} records</span>
+        <h5><i class="bi bi-person-video2 me-2"></i>Lista de Estudiantes</h5>
+        <span class="badge rounded-pill" style="background:#7b3fa0;color:#fff">{{ students.length }} registros</span>
       </div>
       <div class="card-body p-0">
         <div *ngIf="loading" class="text-center py-5 text-muted">
-          <div class="spinner-border spinner-border-sm me-2"></div>Loading...
+          <div class="spinner-border spinner-border-sm me-2"></div>Cargando...
         </div>
         <div class="table-responsive" *ngIf="!loading">
           <table class="table table-hover align-middle mb-0">
             <thead>
               <tr>
                 <th>#</th>
-                <th>Student Code</th>
-                <th>Person</th>
-                <th>Institution</th>
-                <th>Program</th>
-                <th>Grade</th>
-                <th>Status</th>
-                <th class="text-end">Actions</th>
+                <th>Código de Estudiante</th>
+                <th>Persona</th>
+                <th>Institución</th>
+                <th>Programa</th>
+                <th>Grado</th>
+                <th>Estado</th>
+                <th class="text-end">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -52,7 +52,7 @@ import { PageHeaderComponent } from '../../../shared/components/page-header.comp
                   <span class="badge rounded-pill"
                     [style.background]="s.academicStatus === 'Active' ? '#d1fae5' : '#fee2e2'"
                     [style.color]="s.academicStatus === 'Active' ? '#065f46' : '#991b1b'">
-                    {{ s.academicStatus || '—' }}
+                    {{ s.academicStatus === 'Active' ? 'Activo' : (s.academicStatus === 'Graduated' ? 'Egresado' : (s.academicStatus === 'Suspended' ? 'Suspendido' : (s.academicStatus === 'Withdrawn' ? 'Retirado' : s.academicStatus))) || '—' }}
                   </span>
                 </td>
                 <td class="text-end">
@@ -62,7 +62,7 @@ import { PageHeaderComponent } from '../../../shared/components/page-header.comp
                 </td>
               </tr>
               <tr *ngIf="students.length === 0">
-                <td colspan="8" class="text-center text-muted py-4">No students found.</td>
+                <td colspan="8" class="text-center text-muted py-4">No se encontraron estudiantes.</td>
               </tr>
             </tbody>
           </table>
@@ -97,7 +97,7 @@ export class StudentListComponent implements OnInit {
     this.loading = true;
     this.studentService.getAll().subscribe({
       next: (d) => { this.students = d; this.loading = false; },
-      error: () => { this.showAlert('Failed to load students.', 'danger'); this.loading = false; }
+      error: () => { this.showAlert('No se pudo cargar los estudiantes.', 'danger'); this.loading = false; }
     });
   }
 

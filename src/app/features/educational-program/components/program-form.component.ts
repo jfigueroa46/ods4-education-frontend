@@ -14,62 +14,62 @@ import { AlertComponent } from '../../../shared/components/alert.component';
   imports: [CommonModule, ReactiveFormsModule, RouterLink, AlertComponent],
   template: `
     <div class="page-header fade-in">
-      <div><p class="text-muted mb-0" style="font-size:0.8rem">Programs</p><h2>{{ isEdit ? 'Edit Program' : 'New Program' }}</h2></div>
-      <a routerLink="/educational-programs" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Back</a>
+      <div><p class="text-muted mb-0" style="font-size:0.8rem">Programas</p><h2>{{ isEdit ? 'Editar Programa' : 'Nuevo Programa' }}</h2></div>
+      <a routerLink="/educational-programs" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Atrás</a>
     </div>
     <app-alert [message]="alertMsg" [type]="alertType"></app-alert>
 
     <div class="card fade-in" style="max-width:760px">
-      <div class="card-header"><h5><i class="bi bi-journal-bookmark-fill me-2"></i>{{ isEdit ? 'Edit' : 'Create' }} Program</h5></div>
+      <div class="card-header"><h5><i class="bi bi-journal-bookmark-fill me-2"></i>{{ isEdit ? 'Editar' : 'Crear' }} Programa</h5></div>
       <div class="card-body p-4">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="row g-3">
 
             <div class="col-sm-6">
-              <label class="form-label">Country <span class="text-danger">*</span></label>
+              <label class="form-label">País <span class="text-danger">*</span></label>
               <select formControlName="countryId" class="form-select" [class.is-invalid]="isInvalid('countryId')">
-                <option value="">— Select Country —</option>
+                <option value="">— Seleccionar País —</option>
                 <option *ngFor="let c of countries" [value]="c.id">{{ c.countryName }}</option>
               </select>
-              <div class="invalid-feedback">Please select a country.</div>
+              <div class="invalid-feedback">Por favor selecciona un país.</div>
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label">Institution <span class="text-danger">*</span></label>
+              <label class="form-label">Institución <span class="text-danger">*</span></label>
               <select formControlName="institutionId" class="form-select" [class.is-invalid]="isInvalid('institutionId')">
-                <option value="">— Select Institution —</option>
+                <option value="">— Seleccionar Institución —</option>
                 <option *ngFor="let i of institutions" [value]="i.id">{{ i.institutionName }}</option>
               </select>
-              <div class="invalid-feedback">Please select an institution.</div>
+              <div class="invalid-feedback">Por favor selecciona una institución.</div>
             </div>
 
             <div class="col-12">
-              <label class="form-label">Program Name <span class="text-danger">*</span></label>
+              <label class="form-label">Nombre del Programa <span class="text-danger">*</span></label>
               <input formControlName="programName" type="text" class="form-control"
-                     [class.is-invalid]="isInvalid('programName')" placeholder="e.g. Basic Education Program">
-              <div class="invalid-feedback">Program name is required.</div>
+                     [class.is-invalid]="isInvalid('programName')" placeholder="p. ej. Programa de Educación Básica">
+              <div class="invalid-feedback">El nombre del programa es requerido.</div>
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label">Educational Level</label>
+              <label class="form-label">Nivel Educativo</label>
               <select formControlName="educationalLevel" class="form-select">
-                <option value="">— Select —</option>
-                <option>Preschool</option>
-                <option>Primary</option>
-                <option>Secondary</option>
-                <option>Higher Education</option>
-                <option>Technical</option>
-                <option>Postgraduate</option>
+                <option value="">— Seleccionar —</option>
+                <option>Preescolar</option>
+                <option>Primaria</option>
+                <option>Secundaria</option>
+                <option>Educación Superior</option>
+                <option>Técnico</option>
+                <option>Postgrado</option>
               </select>
             </div>
 
             <div class="col-sm-3">
-              <label class="form-label">Beneficiaries</label>
+              <label class="form-label">Beneficiarios</label>
               <input formControlName="beneficiaries" type="number" class="form-control" placeholder="0" min="0">
             </div>
 
             <div class="col-sm-3">
-              <label class="form-label">Start Year</label>
+              <label class="form-label">Año de Inicio</label>
               <input formControlName="startYear" type="number" class="form-control" placeholder="2024" min="1900" max="2100">
             </div>
 
@@ -79,9 +79,9 @@ import { AlertComponent } from '../../../shared/components/alert.component';
             <button type="submit" class="btn btn-primary px-4" [disabled]="saving">
               <span *ngIf="saving" class="spinner-border spinner-border-sm me-2"></span>
               <i *ngIf="!saving" class="bi bi-check-lg me-1"></i>
-              {{ isEdit ? 'Update' : 'Create' }}
+              {{ isEdit ? 'Actualizar' : 'Crear' }}
             </button>
-            <a routerLink="/educational-programs" class="btn btn-outline-secondary">Cancel</a>
+            <a routerLink="/educational-programs" class="btn btn-outline-secondary">Cancelar</a>
           </div>
 
         </form>
@@ -145,7 +145,7 @@ export class ProgramFormComponent implements OnInit {
 
     action.subscribe({
       next: () => this.router.navigate(['/educational-programs']),
-      error: () => { this.showAlert('Operation failed.', 'danger'); this.saving = false; }
+      error: () => { this.showAlert('Operación fallida.', 'danger'); this.saving = false; }
     });
   }
 

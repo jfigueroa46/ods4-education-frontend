@@ -12,36 +12,36 @@ import { RouterLink } from '@angular/router';
     <div class="fade-in">
       <!-- Header -->
       <div class="mb-4">
-        <p class="text-muted mb-0" style="font-size:0.8rem">Welcome back</p>
-        <h2 style="font-weight:800;color:#1e3a5f">Dashboard</h2>
+        <p class="text-muted mb-0" style="font-size:0.8rem">Bienvenido nuevamente</p>
+        <h2 style="font-weight:800;color:#1e3a5f">Panel Principal</h2>
       </div>
 
       <!-- Stat Cards -->
       <div class="row g-3 mb-4">
         <div class="col-sm-6 col-xl-3">
           <div class="stat-card" style="background:linear-gradient(135deg,#1e3a5f,#2d6a9f)">
-            <div class="stat-label">Countries</div>
+            <div class="stat-label">Países</div>
             <div class="stat-value">—</div>
             <i class="bi bi-globe-americas stat-icon"></i>
           </div>
         </div>
         <div class="col-sm-6 col-xl-3">
           <div class="stat-card" style="background:linear-gradient(135deg,#1a7a4a,#27a262)">
-            <div class="stat-label">ODS Goals</div>
+            <div class="stat-label">Objetivos ODS</div>
             <div class="stat-value">17</div>
             <i class="bi bi-bullseye stat-icon"></i>
           </div>
         </div>
         <div class="col-sm-6 col-xl-3">
           <div class="stat-card" style="background:linear-gradient(135deg,#7b3fa0,#a055c9)">
-            <div class="stat-label">Students</div>
+            <div class="stat-label">Estudiantes</div>
             <div class="stat-value">—</div>
             <i class="bi bi-person-video2 stat-icon"></i>
           </div>
         </div>
         <div class="col-sm-6 col-xl-3">
           <div class="stat-card" style="background:linear-gradient(135deg,#c05621,#e07943)">
-            <div class="stat-label">Teachers</div>
+            <div class="stat-label">Profesores</div>
             <div class="stat-value">—</div>
             <i class="bi bi-person-workspace stat-icon"></i>
           </div>
@@ -53,7 +53,7 @@ import { RouterLink } from '@angular/router';
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h5><i class="bi bi-lightning-charge-fill me-2 text-warning"></i>Quick Access</h5>
+              <h5><i class="bi bi-lightning-charge-fill me-2 text-warning"></i>Acceso Rápido</h5>
             </div>
             <div class="card-body">
               <div class="row g-3">
@@ -82,14 +82,14 @@ import { RouterLink } from '@angular/router';
 })
 export class DashboardComponent {
   quickLinks = [
-    { label: 'Countries',     route: '/countries',                icon: 'bi-globe-americas',       color: '#2d6a9f' },
+    { label: 'Países',     route: '/countries',                icon: 'bi-globe-americas',       color: '#2d6a9f' },
     { label: 'ODS',           route: '/ods',                      icon: 'bi-bullseye',             color: '#1a7a4a' },
-    { label: 'Goals',         route: '/goals',                    icon: 'bi-flag-fill',            color: '#c05621' },
-    { label: 'Indicators',    route: '/indicators',               icon: 'bi-bar-chart-line-fill',  color: '#7b3fa0' },
-    { label: 'Institutions',  route: '/educational-institutions', icon: 'bi-building-fill',        color: '#0f7490' },
-    { label: 'Programs',      route: '/educational-programs',     icon: 'bi-journal-bookmark-fill',color: '#b7791f' },
-    { label: 'Persons',       route: '/persons',                  icon: 'bi-person-fill',          color: '#4a5568' },
-    { label: 'Students',      route: '/students',                 icon: 'bi-person-video2',        color: '#7b3fa0' },
-    { label: 'Teachers',      route: '/teachers',                 icon: 'bi-person-workspace',     color: '#c05621' },
+    { label: 'Objetivos',     route: '/goals',                    icon: 'bi-flag-fill',            color: '#c05621' },
+    { label: 'Indicadores',   route: '/indicators',               icon: 'bi-bar-chart-line-fill',  color: '#7b3fa0' },
+    { label: 'Instituciones', route: '/educational-institutions', icon: 'bi-building-fill',        color: '#0f7490' },
+    { label: 'Programas',     route: '/educational-programs',     icon: 'bi-journal-bookmark-fill',color: '#b7791f' },
+    { label: 'Personas',      route: '/persons',                  icon: 'bi-person-fill',          color: '#4a5568' },
+    { label: 'Estudiantes',   route: '/students',                 icon: 'bi-person-video2',        color: '#7b3fa0' },
+    { label: 'Profesores',    route: '/teachers',                 icon: 'bi-person-workspace',     color: '#c05621' },
   ];
 }

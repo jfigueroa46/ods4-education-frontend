@@ -16,11 +16,11 @@ import { AlertComponent } from '../../../shared/components/alert.component';
   template: `
     <div class="page-header fade-in">
       <div>
-        <p class="text-muted mb-0" style="font-size:0.8rem">Countries</p>
-        <h2>{{ isEdit ? 'Edit Country' : 'New Country' }}</h2>
+        <p class="text-muted mb-0" style="font-size:0.8rem">Países</p>
+        <h2>{{ isEdit ? 'Editar País' : 'Nuevo País' }}</h2>
       </div>
       <a routerLink="/countries" class="btn btn-outline-secondary">
-        <i class="bi bi-arrow-left me-1"></i> Back
+        <i class="bi bi-arrow-left me-1"></i> Atrás
       </a>
     </div>
 
@@ -28,30 +28,30 @@ import { AlertComponent } from '../../../shared/components/alert.component';
 
     <div class="card fade-in" style="max-width:580px">
       <div class="card-header">
-        <h5><i class="bi bi-globe-americas me-2"></i>{{ isEdit ? 'Edit' : 'Create' }} Country</h5>
+        <h5><i class="bi bi-globe-americas me-2"></i>{{ isEdit ? 'Editar' : 'Crear' }} País</h5>
       </div>
       <div class="card-body p-4">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
           <div class="mb-3">
-            <label class="form-label">Country Name <span class="text-danger">*</span></label>
+            <label class="form-label">Nombre del País <span class="text-danger">*</span></label>
             <input formControlName="countryName" type="text" class="form-control"
-                   [class.is-invalid]="isInvalid('countryName')" placeholder="e.g. Colombia">
-            <div class="invalid-feedback">Name is required (min 2 characters).</div>
+                   [class.is-invalid]="isInvalid('countryName')" placeholder="p. ej. Colombia">
+            <div class="invalid-feedback">El nombre es requerido (mín 2 caracteres).</div>
           </div>
 
           <div class="mb-4">
-            <label class="form-label">Region</label>
-            <input formControlName="region" type="text" class="form-control" placeholder="e.g. South America">
+            <label class="form-label">Región</label>
+            <input formControlName="region" type="text" class="form-control" placeholder="p. ej. América del Sur">
           </div>
 
           <div class="d-flex gap-2">
             <button type="submit" class="btn btn-primary px-4" [disabled]="saving">
               <span *ngIf="saving" class="spinner-border spinner-border-sm me-2"></span>
               <i *ngIf="!saving" class="bi bi-check-lg me-1"></i>
-              {{ isEdit ? 'Update' : 'Create' }}
+              {{ isEdit ? 'Actualizar' : 'Crear' }}
             </button>
-            <a routerLink="/countries" class="btn btn-outline-secondary">Cancel</a>
+            <a routerLink="/countries" class="btn btn-outline-secondary">Cancelar</a>
           </div>
 
         </form>
@@ -86,7 +86,7 @@ export class CountryFormComponent implements OnInit {
       this.countryId = +id;
       this.countryService.getById(this.countryId).subscribe({
         next: (data) => this.form.patchValue(data),
-        error: () => this.showAlert('Failed to load country data.', 'danger')
+        error: () => this.showAlert('No se pudo cargar los datos del país.', 'danger')
       });
     }
   }
@@ -105,12 +105,12 @@ export class CountryFormComponent implements OnInit {
     if (this.isEdit) {
       this.countryService.update(this.countryId, payload).subscribe({
         next: () => this.router.navigate(['/countries']),
-        error: () => { this.showAlert('Failed to update country.', 'danger'); this.saving = false; }
+        error: () => { this.showAlert('No se pudo actualizar el país.', 'danger'); this.saving = false; }
       });
     } else {
       this.countryService.create(payload).subscribe({
         next: () => this.router.navigate(['/countries']),
-        error: () => { this.showAlert('Failed to create country.', 'danger'); this.saving = false; }
+        error: () => { this.showAlert('No se pudo crear el país.', 'danger'); this.saving = false; }
       });
     }
   }

@@ -15,22 +15,22 @@ import { PageHeaderComponent } from '../../../shared/components/page-header.comp
   imports: [CommonModule, RouterLink, AlertComponent, PageHeaderComponent],
   template: `
     <app-page-header
-      title="Countries"
-      subtitle="Manage"
+      title="Países"
+      subtitle="Administrar"
       actionLink="/countries/new"
-      actionLabel="New Country">
+      actionLabel="Nuevo País">
     </app-page-header>
 
     <app-alert [message]="alertMsg" [type]="alertType"></app-alert>
 
     <div class="card fade-in">
       <div class="card-header">
-        <h5><i class="bi bi-globe-americas me-2"></i>Country List</h5>
-        <span class="badge bg-primary rounded-pill">{{ countries.length }} records</span>
+        <h5><i class="bi bi-globe-americas me-2"></i>Lista de Países</h5>
+        <span class="badge bg-primary rounded-pill">{{ countries.length }} registros</span>
       </div>
       <div class="card-body p-0">
         <div *ngIf="loading" class="text-center py-5 text-muted">
-          <div class="spinner-border spinner-border-sm me-2"></div> Loading...
+          <div class="spinner-border spinner-border-sm me-2"></div> Cargando...
         </div>
 
         <div class="table-responsive" *ngIf="!loading">
@@ -38,9 +38,9 @@ import { PageHeaderComponent } from '../../../shared/components/page-header.comp
             <thead>
               <tr>
                 <th>#</th>
-                <th>Country Name</th>
-                <th>Region</th>
-                <th class="text-end">Actions</th>
+                <th>Nombre del País</th>
+                <th>Región</th>
+                <th class="text-end">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -67,7 +67,7 @@ import { PageHeaderComponent } from '../../../shared/components/page-header.comp
                 </td>
               </tr>
               <tr *ngIf="countries.length === 0">
-                <td colspan="4" class="text-center text-muted py-4">No countries found.</td>
+                <td colspan="4" class="text-center text-muted py-4">No se encontraron países.</td>
               </tr>
             </tbody>
           </table>
@@ -92,15 +92,15 @@ export class CountryListComponent implements OnInit {
     this.loading = true;
     this.countryService.getAll().subscribe({
       next: (data) => { this.countries = data; this.loading = false; },
-      error: () => { this.showAlert('Failed to load countries.', 'danger'); this.loading = false; }
+      error: () => { this.showAlert('No se pudo cargar los países.', 'danger'); this.loading = false; }
     });
   }
 
   confirmDelete(country: Country): void {
-    if (confirm(`Delete "${country.countryName}"? This action cannot be undone.`)) {
+    if (confirm(`¿Eliminar "${country.countryName}"? Esta acción no se puede deshacer.`)) {
       this.countryService.delete(country.id!).subscribe({
-        next: () => { this.showAlert('Country deleted successfully.', 'success'); this.loadCountries(); },
-        error: () => this.showAlert('Failed to delete country.', 'danger')
+        next: () => { this.showAlert('País eliminado exitosamente.', 'success'); this.loadCountries(); },
+        error: () => this.showAlert('No se pudo eliminar el país.', 'danger')
       });
     }
   }

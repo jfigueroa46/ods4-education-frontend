@@ -11,10 +11,10 @@ import { Goal, Ods } from '../../../core/models/models';
   imports: [CommonModule, RouterLink],
   template: `
     <div class="page-header fade-in">
-      <div><p class="text-muted mb-0" style="font-size:0.8rem">Goals</p><h2>Goal Detail</h2></div>
+      <div><p class="text-muted mb-0" style="font-size:0.8rem">Objetivos</p><h2>Detalle del Objetivo</h2></div>
       <div class="d-flex gap-2">
-        <a [routerLink]="['/goals/edit', goal?.id]" class="btn btn-primary"><i class="bi bi-pencil me-1"></i>Edit</a>
-        <a routerLink="/goals" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Back</a>
+        <a [routerLink]="['/goals/edit', goal?.id]" class="btn btn-primary"><i class="bi bi-pencil me-1"></i>Editar</a>
+        <a routerLink="/goals" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Atrás</a>
       </div>
     </div>
     <div class="card fade-in" style="max-width:580px" *ngIf="goal">
@@ -23,12 +23,12 @@ import { Goal, Ods } from '../../../core/models/models';
         <dl class="row mb-0">
           <dt class="col-sm-4 text-muted" style="font-size:0.8rem">ID</dt><dd class="col-sm-8">{{ goal.id }}</dd>
           <dt class="col-sm-4 text-muted" style="font-size:0.8rem">ODS</dt><dd class="col-sm-8">{{ odsName }}</dd>
-          <dt class="col-sm-4 text-muted" style="font-size:0.8rem">Code</dt><dd class="col-sm-8 fw-semibold">{{ goal.metaCode }}</dd>
-          <dt class="col-sm-4 text-muted" style="font-size:0.8rem">Description</dt><dd class="col-sm-8">{{ goal.metaDescription }}</dd>
+          <dt class="col-sm-4 text-muted" style="font-size:0.8rem">Código</dt><dd class="col-sm-8 fw-semibold">{{ goal.metaCode }}</dd>
+          <dt class="col-sm-4 text-muted" style="font-size:0.8rem">Descripción</dt><dd class="col-sm-8">{{ goal.metaDescription }}</dd>
         </dl>
       </div>
     </div>
-    <div *ngIf="loading" class="text-muted"><div class="spinner-border spinner-border-sm me-2"></div>Loading...</div>
+    <div *ngIf="loading" class="text-muted"><div class="spinner-border spinner-border-sm me-2"></div>Cargando...</div>
   `
 })
 export class GoalDetailComponent implements OnInit {

@@ -12,18 +12,18 @@ import { PageHeaderComponent } from '../../../shared/components/page-header.comp
   standalone: true,
   imports: [CommonModule, RouterLink, AlertComponent, PageHeaderComponent],
   template: `
-    <app-page-header title="Indicators" subtitle="Manage" actionLink="/indicators/new" actionLabel="New Indicator"></app-page-header>
+    <app-page-header title="Indicadores" subtitle="Administrar" actionLink="/indicators/new" actionLabel="Nuevo Indicador"></app-page-header>
     <app-alert [message]="alertMsg" [type]="alertType"></app-alert>
     <div class="card fade-in">
       <div class="card-header">
-        <h5><i class="bi bi-bar-chart-line-fill me-2"></i>Indicator List</h5>
-        <span class="badge bg-purple rounded-pill" style="background:#7b3fa0!important">{{ indicators.length }} records</span>
+        <h5><i class="bi bi-bar-chart-line-fill me-2"></i>Lista de Indicadores</h5>
+        <span class="badge bg-purple rounded-pill" style="background:#7b3fa0!important">{{ indicators.length }} registros</span>
       </div>
       <div class="card-body p-0">
-        <div *ngIf="loading" class="text-center py-5 text-muted"><div class="spinner-border spinner-border-sm me-2"></div>Loading...</div>
+        <div *ngIf="loading" class="text-center py-5 text-muted"><div class="spinner-border spinner-border-sm me-2"></div>Cargando...</div>
         <div class="table-responsive" *ngIf="!loading">
           <table class="table table-hover align-middle mb-0">
-            <thead><tr><th>#</th><th>Name</th><th>Goal</th><th>Unit</th><th class="text-end">Actions</th></tr></thead>
+            <thead><tr><th>#</th><th>Nombre</th><th>Objetivo</th><th>Unidad</th><th class="text-end">Acciones</th></tr></thead>
             <tbody>
               <tr *ngFor="let i of indicators">
                 <td class="text-muted" style="font-size:0.8rem">{{ i.id }}</td>
@@ -36,7 +36,7 @@ import { PageHeaderComponent } from '../../../shared/components/page-header.comp
                   <button class="btn btn-sm btn-outline-danger" (click)="confirmDelete(i)"><i class="bi bi-trash"></i></button>
                 </td>
               </tr>
-              <tr *ngIf="indicators.length === 0"><td colspan="5" class="text-center text-muted py-4">No indicators found.</td></tr>
+              <tr *ngIf="indicators.length === 0"><td colspan="5" class="text-center text-muted py-4">No se encontraron indicadores.</td></tr>
             </tbody>
           </table>
         </div>
@@ -59,20 +59,20 @@ export class IndicatorListComponent implements OnInit {
     this.loading = true;
     this.indicatorService.getAll().subscribe({
       next: (d) => { this.indicators = d; this.loading = false; },
-      error: () => { this.showAlert('Failed to load indicators.', 'danger'); this.loading = false; }
+      error: () => { this.showAlert('No se pudo cargar los indicadores.', 'danger'); this.loading = false; }
     });
   }
 
   getGoalCode(metaId: number): string {
     const g = this.goals.find(g => g.id === metaId);
-    return g ? g.metaCode : `Goal #${metaId}`;
+    return g ? g.metaCode : `Objetivo #${metaId}`;
   }
 
   confirmDelete(ind: Indicator): void {
-    if (confirm(`Delete indicator "${ind.indicatorName}"?`)) {
+    if (confirm(`¿Eliminar indicador "${ind.indicatorName}"?`)) {
       this.indicatorService.delete(ind.id!).subscribe({
-        next: () => { this.showAlert('Deleted.', 'success'); this.load(); },
-        error: () => this.showAlert('Failed to delete.', 'danger')
+        next: () => { this.showAlert('Eliminado.', 'success'); this.load(); },
+        error: () => this.showAlert('No se pudo eliminar.', 'danger')
       });
     }
   }

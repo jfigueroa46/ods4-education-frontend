@@ -11,27 +11,27 @@ import { PageHeaderComponent } from '../../../shared/components/page-header.comp
   standalone: true,
   imports: [CommonModule, RouterLink, AlertComponent, PageHeaderComponent],
   template: `
-    <app-page-header title="ODS" subtitle="Manage" actionLink="/ods/new" actionLabel="New ODS"></app-page-header>
+    <app-page-header title="ODS" subtitle="Administrar" actionLink="/ods/new" actionLabel="Nuevo ODS"></app-page-header>
     <app-alert [message]="alertMsg" [type]="alertType"></app-alert>
 
     <div class="card fade-in">
       <div class="card-header">
-        <h5><i class="bi bi-bullseye me-2"></i>ODS List</h5>
-        <span class="badge bg-success rounded-pill">{{ odsList.length }} records</span>
+        <h5><i class="bi bi-bullseye me-2"></i>Lista de ODS</h5>
+        <span class="badge bg-success rounded-pill">{{ odsList.length }} registros</span>
       </div>
       <div class="card-body p-0">
         <div *ngIf="loading" class="text-center py-5 text-muted">
-          <div class="spinner-border spinner-border-sm me-2"></div> Loading...
+          <div class="spinner-border spinner-border-sm me-2"></div> Cargando...
         </div>
         <div class="table-responsive" *ngIf="!loading">
           <table class="table table-hover align-middle mb-0">
             <thead>
               <tr>
                 <th>#</th>
-                <th>Number</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th class="text-end">Actions</th>
+                <th>Número</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th class="text-end">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -53,7 +53,7 @@ import { PageHeaderComponent } from '../../../shared/components/page-header.comp
                 </td>
               </tr>
               <tr *ngIf="odsList.length === 0">
-                <td colspan="5" class="text-center text-muted py-4">No ODS found.</td>
+                <td colspan="5" class="text-center text-muted py-4">No se encontraron ODS.</td>
               </tr>
             </tbody>
           </table>
@@ -75,15 +75,15 @@ export class OdsListComponent implements OnInit {
     this.loading = true;
     this.odsService.getAll().subscribe({
       next: (d) => { this.odsList = d; this.loading = false; },
-      error: () => { this.showAlert('Failed to load ODS.', 'danger'); this.loading = false; }
+      error: () => { this.showAlert('No se pudo cargar los ODS.', 'danger'); this.loading = false; }
     });
   }
 
   confirmDelete(ods: Ods): void {
-    if (confirm(`Delete ODS "${ods.odsName}"?`)) {
+    if (confirm(`¿Eliminar ODS "${ods.odsName}"?`)) {
       this.odsService.delete(ods.id!).subscribe({
-        next: () => { this.showAlert('ODS deleted.', 'success'); this.load(); },
-        error: () => this.showAlert('Failed to delete.', 'danger')
+        next: () => { this.showAlert('ODS eliminado.', 'success'); this.load(); },
+        error: () => this.showAlert('No se pudo eliminar.', 'danger')
       });
     }
   }

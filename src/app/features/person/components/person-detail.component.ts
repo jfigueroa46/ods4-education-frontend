@@ -10,10 +10,10 @@ import { Person } from '../../../core/models/models';
   imports: [CommonModule, RouterLink],
   template: `
     <div class="page-header fade-in">
-      <div><p class="text-muted mb-0" style="font-size:0.8rem">Persons</p><h2>Person Detail</h2></div>
+      <div><p class="text-muted mb-0" style="font-size:0.8rem">Personas</p><h2>Detalle de Persona</h2></div>
       <div class="d-flex gap-2">
-        <a [routerLink]="['/persons/edit', person?.id]" class="btn btn-primary"><i class="bi bi-pencil me-1"></i>Edit</a>
-        <a routerLink="/persons" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Back</a>
+        <a [routerLink]="['/persons/edit', person?.id]" class="btn btn-primary"><i class="bi bi-pencil me-1"></i>Editar</a>
+        <a routerLink="/persons" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Atrás</a>
       </div>
     </div>
     <div class="card fade-in" style="max-width:600px" *ngIf="person">
@@ -23,17 +23,17 @@ import { Person } from '../../../core/models/models';
       <div class="card-body">
         <dl class="row mb-0">
           <dt class="col-sm-5 text-muted" style="font-size:0.8rem">ID</dt><dd class="col-sm-7">{{ person.id }}</dd>
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Document</dt><dd class="col-sm-7">{{ person.documentType }} {{ person.documentNumber }}</dd>
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Full Name</dt><dd class="col-sm-7 fw-semibold">{{ person.firstName }} {{ person.lastName }}</dd>
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Birth Date</dt><dd class="col-sm-7">{{ person.birthDate || '—' }}</dd>
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Gender</dt><dd class="col-sm-7">{{ person.gender || '—' }}</dd>
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Phone</dt><dd class="col-sm-7">{{ person.phone || '—' }}</dd>
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Email</dt><dd class="col-sm-7">{{ person.email || '—' }}</dd>
-          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Address</dt><dd class="col-sm-7">{{ person.address || '—' }}</dd>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Documento</dt><dd class="col-sm-7">{{ person.documentType }} {{ person.documentNumber }}</dd>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Nombre Completo</dt><dd class="col-sm-7 fw-semibold">{{ person.firstName }} {{ person.lastName }}</dd>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Fecha de Nacimiento</dt><dd class="col-sm-7">{{ person.birthDate || '—' }}</dd>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Género</dt><dd class="col-sm-7">{{ person.gender || '—' }}</dd>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Teléfono</dt><dd class="col-sm-7">{{ person.phone || '—' }}</dd>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Correo</dt><dd class="col-sm-7">{{ person.email || '—' }}</dd>
+          <dt class="col-sm-5 text-muted" style="font-size:0.8rem">Dirección</dt><dd class="col-sm-7">{{ person.address || '—' }}</dd>
         </dl>
       </div>
     </div>
-    <div *ngIf="loading" class="text-muted"><div class="spinner-border spinner-border-sm me-2"></div>Loading...</div>
+    <div *ngIf="loading" class="text-muted"><div class="spinner-border spinner-border-sm me-2"></div>Cargando...</div>
   `
 })
 export class PersonDetailComponent implements OnInit {

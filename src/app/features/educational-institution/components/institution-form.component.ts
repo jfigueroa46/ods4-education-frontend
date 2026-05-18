@@ -13,66 +13,66 @@ import { AlertComponent } from '../../../shared/components/alert.component';
   imports: [CommonModule, ReactiveFormsModule, RouterLink, AlertComponent],
   template: `
     <div class="page-header fade-in">
-      <div><p class="text-muted mb-0" style="font-size:0.8rem">Institutions</p><h2>{{ isEdit ? 'Edit Institution' : 'New Institution' }}</h2></div>
-      <a routerLink="/educational-institutions" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Back</a>
+      <div><p class="text-muted mb-0" style="font-size:0.8rem">Instituciones</p><h2>{{ isEdit ? 'Editar Institución' : 'Nueva Institución' }}</h2></div>
+      <a routerLink="/educational-institutions" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Atrás</a>
     </div>
     <app-alert [message]="alertMsg" [type]="alertType"></app-alert>
 
     <div class="card fade-in" style="max-width:760px">
-      <div class="card-header"><h5><i class="bi bi-building-fill me-2"></i>{{ isEdit ? 'Edit' : 'Create' }} Institution</h5></div>
+      <div class="card-header"><h5><i class="bi bi-building-fill me-2"></i>{{ isEdit ? 'Editar' : 'Crear' }} Institución</h5></div>
       <div class="card-body p-4">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="row g-3">
 
             <div class="col-12">
-              <label class="form-label">Country <span class="text-danger">*</span></label>
+              <label class="form-label">País <span class="text-danger">*</span></label>
               <select formControlName="countryId" class="form-select" [class.is-invalid]="isInvalid('countryId')">
-                <option value="">— Select Country —</option>
+                <option value="">— Seleccionar País —</option>
                 <option *ngFor="let c of countries" [value]="c.id">{{ c.countryName }}</option>
               </select>
-              <div class="invalid-feedback">Please select a country.</div>
+              <div class="invalid-feedback">Por favor selecciona un país.</div>
             </div>
 
             <div class="col-sm-8">
-              <label class="form-label">Institution Name <span class="text-danger">*</span></label>
+              <label class="form-label">Nombre de la Institución <span class="text-danger">*</span></label>
               <input formControlName="institutionName" type="text" class="form-control"
-                     [class.is-invalid]="isInvalid('institutionName')" placeholder="e.g. Universidad Nacional">
-              <div class="invalid-feedback">Name is required.</div>
+                     [class.is-invalid]="isInvalid('institutionName')" placeholder="p. ej. Universidad Nacional">
+              <div class="invalid-feedback">El nombre es requerido.</div>
             </div>
 
             <div class="col-sm-4">
-              <label class="form-label">Institution Type</label>
+              <label class="form-label">Tipo de Institución</label>
               <select formControlName="institutionType" class="form-select">
-                <option value="">— Select —</option>
-                <option>Public</option>
-                <option>Private</option>
-                <option>Mixed</option>
+                <option value="">— Seleccionar —</option>
+                <option>Público</option>
+                <option>Privado</option>
+                <option>Mixto</option>
               </select>
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label">Internet Access</label>
+              <label class="form-label">Acceso a Internet</label>
               <select formControlName="internetAccess" class="form-select">
-                <option value="">— Select —</option>
-                <option>Yes</option>
+                <option value="">— Seleccionar —</option>
+                <option>Sí</option>
                 <option>No</option>
-                <option>Partial</option>
+                <option>Parcial</option>
               </select>
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label">Student Count</label>
+              <label class="form-label">Cantidad de Estudiantes</label>
               <input formControlName="studentCount" type="number" class="form-control" placeholder="0" min="0">
             </div>
 
             <div class="col-12">
-              <label class="form-label">Infrastructure Status</label>
+              <label class="form-label">Estado de Infraestructura</label>
               <select formControlName="infrastructureStatus" class="form-select">
-                <option value="">— Select —</option>
-                <option>Excellent</option>
-                <option>Good</option>
-                <option>Fair</option>
-                <option>Poor</option>
+                <option value="">— Seleccionar —</option>
+                <option>Excelente</option>
+                <option>Bueno</option>
+                <option>Regular</option>
+                <option>Deficiente</option>
               </select>
             </div>
 
@@ -82,9 +82,9 @@ import { AlertComponent } from '../../../shared/components/alert.component';
             <button type="submit" class="btn btn-primary px-4" [disabled]="saving">
               <span *ngIf="saving" class="spinner-border spinner-border-sm me-2"></span>
               <i *ngIf="!saving" class="bi bi-check-lg me-1"></i>
-              {{ isEdit ? 'Update' : 'Create' }}
+              {{ isEdit ? 'Actualizar' : 'Crear' }}
             </button>
-            <a routerLink="/educational-institutions" class="btn btn-outline-secondary">Cancel</a>
+            <a routerLink="/educational-institutions" class="btn btn-outline-secondary">Cancelar</a>
           </div>
 
         </form>
@@ -141,7 +141,7 @@ export class InstitutionFormComponent implements OnInit {
 
     action.subscribe({
       next: () => this.router.navigate(['/educational-institutions']),
-      error: () => { this.showAlert('Operation failed.', 'danger'); this.saving = false; }
+      error: () => { this.showAlert('Operación fallida.', 'danger'); this.saving = false; }
     });
   }
 

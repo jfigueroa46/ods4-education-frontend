@@ -22,25 +22,25 @@ import { CommonModule } from '@angular/common';
         </div>
         <div class="brand-text">
           ODS Educación
-          <small>Management System</small>
+          <small>Sistema de Gestión</small>
         </div>
       </div>
 
       <!-- Nav links -->
       <div class="sidebar-nav">
 
-        <div class="nav-section-label">Main</div>
+        <div class="nav-section-label">Principal</div>
 
         <a routerLink="/dashboard" routerLinkActive="active" class="nav-link" (click)="closeMobile()">
           <i class="bi bi-grid-1x2-fill"></i>
-          Dashboard
+          Panel Principal
         </a>
 
-        <div class="nav-section-label mt-2">Objectives</div>
+        <div class="nav-section-label mt-2">Objetivos</div>
 
         <a routerLink="/countries" routerLinkActive="active" class="nav-link" (click)="closeMobile()">
           <i class="bi bi-globe-americas"></i>
-          Countries
+          Países
         </a>
 
         <a routerLink="/ods" routerLinkActive="active" class="nav-link" (click)="closeMobile()">
@@ -50,41 +50,41 @@ import { CommonModule } from '@angular/common';
 
         <a routerLink="/goals" routerLinkActive="active" class="nav-link" (click)="closeMobile()">
           <i class="bi bi-flag-fill"></i>
-          Goals
+          Objetivos
         </a>
 
         <a routerLink="/indicators" routerLinkActive="active" class="nav-link" (click)="closeMobile()">
           <i class="bi bi-bar-chart-line-fill"></i>
-          Indicators
+          Indicadores
         </a>
 
-        <div class="nav-section-label mt-2">Education</div>
+        <div class="nav-section-label mt-2">Educación</div>
 
         <a routerLink="/educational-institutions" routerLinkActive="active" class="nav-link" (click)="closeMobile()">
           <i class="bi bi-building-fill"></i>
-          Institutions
+          Instituciones
         </a>
 
         <a routerLink="/educational-programs" routerLinkActive="active" class="nav-link" (click)="closeMobile()">
           <i class="bi bi-journal-bookmark-fill"></i>
-          Programs
+          Programas
         </a>
 
-        <div class="nav-section-label mt-2">People</div>
+        <div class="nav-section-label mt-2">Personas</div>
 
         <a routerLink="/persons" routerLinkActive="active" class="nav-link" (click)="closeMobile()">
           <i class="bi bi-person-fill"></i>
-          Persons
+          Personas
         </a>
 
         <a routerLink="/students" routerLinkActive="active" class="nav-link" (click)="closeMobile()">
           <i class="bi bi-person-video2"></i>
-          Students
+          Estudiantes
         </a>
 
         <a routerLink="/teachers" routerLinkActive="active" class="nav-link" (click)="closeMobile()">
           <i class="bi bi-person-workspace"></i>
-          Teachers
+          Profesores
         </a>
       </div>
     </nav>

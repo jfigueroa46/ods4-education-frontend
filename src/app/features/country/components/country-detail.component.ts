@@ -14,15 +14,15 @@ import { Country } from '../../../core/models/models';
   template: `
     <div class="page-header fade-in">
       <div>
-        <p class="text-muted mb-0" style="font-size:0.8rem">Paises</p>
-        <h2>Country Detail</h2>
+        <p class="text-muted mb-0" style="font-size:0.8rem">Países</p>
+        <h2>Detalle del País</h2>
       </div>
       <div class="d-flex gap-2">
         <a [routerLink]="['/countries/edit', country?.id]" class="btn btn-primary">
-          <i class="bi bi-pencil me-1"></i> Edit
+          <i class="bi bi-pencil me-1"></i> Editar
         </a>
         <a routerLink="/countries" class="btn btn-outline-secondary">
-          <i class="bi bi-arrow-left me-1"></i> Back
+          <i class="bi bi-arrow-left me-1"></i> Atrás
         </a>
       </div>
     </div>
@@ -36,18 +36,18 @@ import { Country } from '../../../core/models/models';
           <dt class="col-sm-4 text-muted" style="font-size:0.8rem">ID</dt>
           <dd class="col-sm-8">{{ country.id }}</dd>
 
-          <dt class="col-sm-4 text-muted" style="font-size:0.8rem">Country Name</dt>
+          <dt class="col-sm-4 text-muted" style="font-size:0.8rem">Nombre del País</dt>
           <dd class="col-sm-8 fw-semibold">{{ country.countryName }}</dd>
 
-          <dt class="col-sm-4 text-muted" style="font-size:0.8rem">Region</dt>
+          <dt class="col-sm-4 text-muted" style="font-size:0.8rem">Región</dt>
           <dd class="col-sm-8">{{ country.region || '—' }}</dd>
         </dl>
       </div>
     </div>
 
-    <div *ngIf="!country && !loading" class="alert alert-danger">Country not found.</div>
+    <div *ngIf="!country && !loading" class="alert alert-danger">País no encontrado.</div>
     <div *ngIf="loading" class="text-muted">
-      <div class="spinner-border spinner-border-sm me-2"></div> Loading...
+      <div class="spinner-border spinner-border-sm me-2"></div> Cargando...
     </div>
   `
 })

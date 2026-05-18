@@ -15,67 +15,67 @@ import { AlertComponent } from '../../../shared/components/alert.component';
   imports: [CommonModule, ReactiveFormsModule, RouterLink, AlertComponent],
   template: `
     <div class="page-header fade-in">
-      <div><p class="text-muted mb-0" style="font-size:0.8rem">Students</p><h2>{{ isEdit ? 'Edit Student' : 'New Student' }}</h2></div>
-      <a routerLink="/students" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Back</a>
+      <div><p class="text-muted mb-0" style="font-size:0.8rem">Estudiantes</p><h2>{{ isEdit ? 'Editar Estudiante' : 'Nuevo Estudiante' }}</h2></div>
+      <a routerLink="/students" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Atrás</a>
     </div>
     <app-alert [message]="alertMsg" [type]="alertType"></app-alert>
 
     <div class="card fade-in" style="max-width:760px">
-      <div class="card-header"><h5><i class="bi bi-person-video2 me-2"></i>{{ isEdit ? 'Edit' : 'Create' }} Student</h5></div>
+      <div class="card-header"><h5><i class="bi bi-person-video2 me-2"></i>{{ isEdit ? 'Editar' : 'Crear' }} Estudiante</h5></div>
       <div class="card-body p-4">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="row g-3">
 
             <div class="col-sm-6">
-              <label class="form-label">Person <span class="text-danger">*</span></label>
+              <label class="form-label">Persona <span class="text-danger">*</span></label>
               <select formControlName="personId" class="form-select" [class.is-invalid]="isInvalid('personId')">
-                <option value="">— Select Person —</option>
+                <option value="">— Seleccionar Persona —</option>
                 <option *ngFor="let p of persons" [value]="p.id">{{ p.firstName }} {{ p.lastName }} ({{ p.documentNumber }})</option>
               </select>
-              <div class="invalid-feedback">Please select a person.</div>
+              <div class="invalid-feedback">Por favor selecciona una persona.</div>
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label">Institution <span class="text-danger">*</span></label>
+              <label class="form-label">Institución <span class="text-danger">*</span></label>
               <select formControlName="institutionId" class="form-select" [class.is-invalid]="isInvalid('institutionId')">
-                <option value="">— Select Institution —</option>
+                <option value="">— Seleccionar Institución —</option>
                 <option *ngFor="let i of institutions" [value]="i.id">{{ i.institutionName }}</option>
               </select>
-              <div class="invalid-feedback">Please select an institution.</div>
+              <div class="invalid-feedback">Por favor selecciona una institución.</div>
             </div>
 
             <div class="col-12">
-              <label class="form-label">Program <span class="text-danger">*</span></label>
+              <label class="form-label">Programa <span class="text-danger">*</span></label>
               <select formControlName="programId" class="form-select" [class.is-invalid]="isInvalid('programId')">
-                <option value="">— Select Program —</option>
+                <option value="">— Seleccionar Programa —</option>
                 <option *ngFor="let p of programs" [value]="p.id">{{ p.programName }}</option>
               </select>
-              <div class="invalid-feedback">Please select a program.</div>
+              <div class="invalid-feedback">Por favor selecciona un programa.</div>
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label">Student Code</label>
-              <input formControlName="studentCode" type="text" class="form-control" placeholder="e.g. STU-2024-001">
+              <label class="form-label">Código de Estudiante</label>
+              <input formControlName="studentCode" type="text" class="form-control" placeholder="p. ej. STU-2024-001">
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label">Grade</label>
-              <input formControlName="grade" type="text" class="form-control" placeholder="e.g. 10th grade">
+              <label class="form-label">Grado</label>
+              <input formControlName="grade" type="text" class="form-control" placeholder="p. ej. Décimo grado">
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label">Enrollment Date</label>
+              <label class="form-label">Fecha de Matrícula</label>
               <input formControlName="enrollmentDate" type="date" class="form-control">
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label">Academic Status</label>
+              <label class="form-label">Estado Académico</label>
               <select formControlName="academicStatus" class="form-select">
-                <option value="">— Select —</option>
-                <option>Active</option>
-                <option>Graduated</option>
-                <option>Suspended</option>
-                <option>Withdrawn</option>
+                <option value="">— Seleccionar —</option>
+                <option value="Active">Activo</option>
+                <option value="Graduated">Egresado</option>
+                <option value="Suspended">Suspendido</option>
+                <option value="Withdrawn">Retirado</option>
               </select>
             </div>
 
@@ -85,9 +85,9 @@ import { AlertComponent } from '../../../shared/components/alert.component';
             <button type="submit" class="btn btn-primary px-4" [disabled]="saving">
               <span *ngIf="saving" class="spinner-border spinner-border-sm me-2"></span>
               <i *ngIf="!saving" class="bi bi-check-lg me-1"></i>
-              {{ isEdit ? 'Update' : 'Create' }}
+              {{ isEdit ? 'Actualizar' : 'Crear' }}
             </button>
-            <a routerLink="/students" class="btn btn-outline-secondary">Cancel</a>
+            <a routerLink="/students" class="btn btn-outline-secondary">Cancelar</a>
           </div>
 
         </form>

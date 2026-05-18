@@ -12,24 +12,24 @@ import { PageHeaderComponent } from '../../../shared/components/page-header.comp
   standalone: true,
   imports: [CommonModule, RouterLink, AlertComponent, PageHeaderComponent],
   template: `
-    <app-page-header title="Goals" subtitle="Manage" actionLink="/goals/new" actionLabel="New Goal"></app-page-header>
+    <app-page-header title="Objetivos" subtitle="Administrar" actionLink="/goals/new" actionLabel="Nuevo Objetivo"></app-page-header>
     <app-alert [message]="alertMsg" [type]="alertType"></app-alert>
     <div class="card fade-in">
       <div class="card-header">
-        <h5><i class="bi bi-flag-fill me-2"></i>Goal List</h5>
-        <span class="badge bg-warning text-dark rounded-pill">{{ goals.length }} records</span>
+        <h5><i class="bi bi-flag-fill me-2"></i>Lista de Objetivos</h5>
+        <span class="badge bg-warning text-dark rounded-pill">{{ goals.length }} registros</span>
       </div>
       <div class="card-body p-0">
-        <div *ngIf="loading" class="text-center py-5 text-muted"><div class="spinner-border spinner-border-sm me-2"></div>Loading...</div>
+        <div *ngIf="loading" class="text-center py-5 text-muted"><div class="spinner-border spinner-border-sm me-2"></div>Cargando...</div>
         <div class="table-responsive" *ngIf="!loading">
           <table class="table table-hover align-middle mb-0">
             <thead>
               <tr>
                 <th>#</th>
-                <th>Code</th>
+                <th>Código</th>
                 <th>ODS</th>
-                <th>Description</th>
-                <th class="text-end">Actions</th>
+                <th>Descripción</th>
+                <th class="text-end">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -44,7 +44,7 @@ import { PageHeaderComponent } from '../../../shared/components/page-header.comp
                   <button class="btn btn-sm btn-outline-danger" (click)="confirmDelete(g)"><i class="bi bi-trash"></i></button>
                 </td>
               </tr>
-              <tr *ngIf="goals.length === 0"><td colspan="5" class="text-center text-muted py-4">No goals found.</td></tr>
+              <tr *ngIf="goals.length === 0"><td colspan="5" class="text-center text-muted py-4">No se encontraron objetivos.</td></tr>
             </tbody>
           </table>
         </div>
@@ -69,7 +69,7 @@ export class GoalListComponent implements OnInit {
     this.loading = true;
     this.goalService.getAll().subscribe({
       next: (d) => { this.goals = d; this.loading = false; },
-      error: () => { this.showAlert('Failed to load goals.', 'danger'); this.loading = false; }
+      error: () => { this.showAlert('No se pudo cargar los objetivos.', 'danger'); this.loading = false; }
     });
   }
 
@@ -79,10 +79,10 @@ export class GoalListComponent implements OnInit {
   }
 
   confirmDelete(goal: Goal): void {
-    if (confirm(`Delete goal "${goal.metaCode}"?`)) {
+    if (confirm(`¿Eliminar objetivo "${goal.metaCode}"?`)) {
       this.goalService.delete(goal.id!).subscribe({
-        next: () => { this.showAlert('Goal deleted.', 'success'); this.load(); },
-        error: () => this.showAlert('Failed to delete.', 'danger')
+        next: () => { this.showAlert('Objetivo eliminado.', 'success'); this.load(); },
+        error: () => this.showAlert('No se pudo eliminar.', 'danger')
       });
     }
   }

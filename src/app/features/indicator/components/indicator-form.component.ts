@@ -13,37 +13,37 @@ import { AlertComponent } from '../../../shared/components/alert.component';
   imports: [CommonModule, ReactiveFormsModule, RouterLink, AlertComponent],
   template: `
     <div class="page-header fade-in">
-      <div><p class="text-muted mb-0" style="font-size:0.8rem">Indicators</p><h2>{{ isEdit ? 'Edit Indicator' : 'New Indicator' }}</h2></div>
-      <a routerLink="/indicators" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Back</a>
+      <div><p class="text-muted mb-0" style="font-size:0.8rem">Indicadores</p><h2>{{ isEdit ? 'Editar Indicador' : 'Nuevo Indicador' }}</h2></div>
+      <a routerLink="/indicators" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Atrás</a>
     </div>
     <app-alert [message]="alertMsg" [type]="alertType"></app-alert>
     <div class="card fade-in" style="max-width:640px">
-      <div class="card-header"><h5><i class="bi bi-bar-chart-line-fill me-2"></i>{{ isEdit ? 'Edit' : 'Create' }} Indicator</h5></div>
+      <div class="card-header"><h5><i class="bi bi-bar-chart-line-fill me-2"></i>{{ isEdit ? 'Editar' : 'Crear' }} Indicador</h5></div>
       <div class="card-body p-4">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="mb-3">
-            <label class="form-label">Goal <span class="text-danger">*</span></label>
+            <label class="form-label">Objetivo <span class="text-danger">*</span></label>
             <select formControlName="metaId" class="form-select" [class.is-invalid]="isInvalid('metaId')">
-              <option value="">— Select Goal —</option>
+              <option value="">— Seleccionar Objetivo —</option>
               <option *ngFor="let g of goals" [value]="g.id">{{ g.metaCode }} — {{ g.metaDescription }}</option>
             </select>
-            <div class="invalid-feedback">Please select a goal.</div>
+            <div class="invalid-feedback">Por favor selecciona un objetivo.</div>
           </div>
           <div class="mb-3">
-            <label class="form-label">Indicator Name <span class="text-danger">*</span></label>
-            <input formControlName="indicatorName" type="text" class="form-control" [class.is-invalid]="isInvalid('indicatorName')" placeholder="e.g. Literacy Rate">
-            <div class="invalid-feedback">Name is required.</div>
+            <label class="form-label">Nombre del Indicador <span class="text-danger">*</span></label>
+            <input formControlName="indicatorName" type="text" class="form-control" [class.is-invalid]="isInvalid('indicatorName')" placeholder="p. ej. Tasa de Alfabetización">
+            <div class="invalid-feedback">El nombre es requerido.</div>
           </div>
           <div class="mb-4">
-            <label class="form-label">Measurement Unit</label>
-            <input formControlName="measurementUnit" type="text" class="form-control" placeholder="e.g. Percentage (%)">
+            <label class="form-label">Unidad de Medida</label>
+            <input formControlName="measurementUnit" type="text" class="form-control" placeholder="p. ej. Porcentaje (%)">
           </div>
           <div class="d-flex gap-2">
             <button type="submit" class="btn btn-primary px-4" [disabled]="saving">
               <span *ngIf="saving" class="spinner-border spinner-border-sm me-2"></span>
-              <i *ngIf="!saving" class="bi bi-check-lg me-1"></i>{{ isEdit ? 'Update' : 'Create' }}
+              <i *ngIf="!saving" class="bi bi-check-lg me-1"></i>{{ isEdit ? 'Actualizar' : 'Crear' }}
             </button>
-            <a routerLink="/indicators" class="btn btn-outline-secondary">Cancel</a>
+            <a routerLink="/indicators" class="btn btn-outline-secondary">Cancelar</a>
           </div>
         </form>
       </div>
@@ -80,7 +80,7 @@ export class IndicatorFormComponent implements OnInit {
     const action = this.isEdit ? this.indicatorService.update(this.indicatorId, payload) : this.indicatorService.create(payload);
     action.subscribe({
       next: () => this.router.navigate(['/indicators']),
-      error: () => { this.showAlert('Operation failed.', 'danger'); this.saving = false; }
+      error: () => { this.showAlert('Operación fallida.', 'danger'); this.saving = false; }
     });
   }
 

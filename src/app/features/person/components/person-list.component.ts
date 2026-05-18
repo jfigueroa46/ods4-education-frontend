@@ -11,18 +11,18 @@ import { PageHeaderComponent } from '../../../shared/components/page-header.comp
   standalone: true,
   imports: [CommonModule, RouterLink, AlertComponent, PageHeaderComponent],
   template: `
-    <app-page-header title="Persons" subtitle="Manage" actionLink="/persons/new" actionLabel="New Person"></app-page-header>
+    <app-page-header title="Personas" subtitle="Administrar" actionLink="/persons/new" actionLabel="Nueva Persona"></app-page-header>
     <app-alert [message]="alertMsg" [type]="alertType"></app-alert>
     <div class="card fade-in">
       <div class="card-header">
-        <h5><i class="bi bi-person-fill me-2"></i>Person List</h5>
-        <span class="badge bg-secondary rounded-pill">{{ persons.length }} records</span>
+        <h5><i class="bi bi-person-fill me-2"></i>Lista de Personas</h5>
+        <span class="badge bg-secondary rounded-pill">{{ persons.length }} registros</span>
       </div>
       <div class="card-body p-0">
-        <div *ngIf="loading" class="text-center py-5 text-muted"><div class="spinner-border spinner-border-sm me-2"></div>Loading...</div>
+        <div *ngIf="loading" class="text-center py-5 text-muted"><div class="spinner-border spinner-border-sm me-2"></div>Cargando...</div>
         <div class="table-responsive" *ngIf="!loading">
           <table class="table table-hover align-middle mb-0">
-            <thead><tr><th>#</th><th>Full Name</th><th>Document</th><th>Email</th><th>Gender</th><th class="text-end">Actions</th></tr></thead>
+            <thead><tr><th>#</th><th>Nombre Completo</th><th>Documento</th><th>Correo</th><th>Género</th><th class="text-end">Acciones</th></tr></thead>
             <tbody>
               <tr *ngFor="let p of persons">
                 <td class="text-muted" style="font-size:0.8rem">{{ p.id }}</td>
@@ -38,7 +38,7 @@ import { PageHeaderComponent } from '../../../shared/components/page-header.comp
                   <button class="btn btn-sm btn-outline-danger" (click)="confirmDelete(p)"><i class="bi bi-trash"></i></button>
                 </td>
               </tr>
-              <tr *ngIf="persons.length === 0"><td colspan="6" class="text-center text-muted py-4">No persons found.</td></tr>
+              <tr *ngIf="persons.length === 0"><td colspan="6" class="text-center text-muted py-4">No se encontraron personas.</td></tr>
             </tbody>
           </table>
         </div>
@@ -57,15 +57,15 @@ export class PersonListComponent implements OnInit {
     this.loading = true;
     this.personService.getAll().subscribe({
       next: (d) => { this.persons = d; this.loading = false; },
-      error: () => { this.showAlert('Failed to load persons.', 'danger'); this.loading = false; }
+      error: () => { this.showAlert('No se pudo cargar las personas.', 'danger'); this.loading = false; }
     });
   }
 
   confirmDelete(p: Person): void {
-    if (confirm(`Delete "${p.firstName} ${p.lastName}"?`)) {
+    if (confirm(`¿Eliminar "${p.firstName} ${p.lastName}"?`)) {
       this.personService.delete(p.id!).subscribe({
-        next: () => { this.showAlert('Person deleted.', 'success'); this.load(); },
-        error: () => this.showAlert('Failed to delete.', 'danger')
+        next: () => { this.showAlert('Persona eliminada.', 'success'); this.load(); },
+        error: () => this.showAlert('No se pudo eliminar.', 'danger')
       });
     }
   }
